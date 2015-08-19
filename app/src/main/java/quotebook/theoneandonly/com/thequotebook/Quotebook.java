@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 import java.util.ArrayList;
 
 public class Quotebook extends Activity {
@@ -17,12 +20,12 @@ public class Quotebook extends Activity {
     private GestureDetectorCompat mDetector;
     private static final String DEBUG_TAG = "Quotebook";
 
-    protected TextView quoteText;
-    protected TextView personText;
+    @Bind(R.id.quote) TextView quoteText;
+    @Bind(R.id.person) TextView personText;
 
     protected ArrayList<Quote> quoteList = new ArrayList<Quote>();
 
-    protected int quoteIndex = -1; // to handle default text in layout
+    protected int quoteIndex = -1;
 
 
     public void updateText() {
@@ -51,11 +54,8 @@ public class Quotebook extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_quotebook);
-
-        this.quoteText = (TextView) findViewById(R.id.quote);
-        this.personText = (TextView) findViewById(R.id.person);
+        ButterKnife.bind(this);
 
         // Instantiate the gesture detector with the
         // application context and an implementation of
