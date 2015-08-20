@@ -2,8 +2,10 @@ package quotebook.theoneandonly.com.thequotebook;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -21,6 +23,7 @@ public class SingleQuoteActivity extends Activity {
         Intent intent = getIntent();
         String quote = intent.getStringExtra(Quotebook.EXTRA_QUOTE);
         String person = intent.getStringExtra(Quotebook.EXTRA_PERSON);
+        String hex = intent.getStringExtra(Quotebook.EXTRA_COLOR);
 
         vQuote = (TextView) findViewById(R.id.quote);
         vPerson = (TextView) findViewById(R.id.person);
@@ -28,6 +31,11 @@ public class SingleQuoteActivity extends Activity {
 
         vQuote.setText(quote);
         vPerson.setText(person);
+
+        int color = Color.parseColor(hex);
+
+        Log.d("FUCK", "color: " + color);
+        vCard.setCardBackgroundColor(color);
     }
 
     @Override

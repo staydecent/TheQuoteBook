@@ -48,6 +48,7 @@ public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.QuoteViewHol
         Log.d("QUOTE", "onBindViewHolder: " + q.quote + " " + q.person);
         quoteViewHolder.vQuote.setText(q.quote);
         quoteViewHolder.vPerson.setText(q.person);
+        quoteViewHolder.vCard.setCardBackgroundColor(q.color);
     }
 
 
@@ -62,16 +63,6 @@ public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.QuoteViewHol
             vQuote = (TextView) v.findViewById(R.id.quote);
             vPerson = (TextView) v.findViewById(R.id.person);
             vCard = (CardView) v.findViewById(R.id.card_view);
-
-            Random rnd = new Random();
-
-            int r = rnd.nextInt(200);
-            int g = rnd.nextInt(200);
-            int b = rnd.nextInt(200);
-
-            int randomColor = Color.rgb(r, g, b);
-
-            vCard.setCardBackgroundColor(randomColor);
         }
     }
 }

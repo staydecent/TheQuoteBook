@@ -18,6 +18,7 @@ public class Quotebook extends Activity {
 
     public final static String EXTRA_QUOTE = "com.theoneandonly.quotebook.QUOTE";
     public final static String EXTRA_PERSON = "com.theoneandonly.quotebook.PERSON";
+    public final static String EXTRA_COLOR = "com.theoneandonly.quotebook.COLOR";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,11 @@ public class Quotebook extends Activity {
                         Intent intent = new Intent(mContext, SingleQuoteActivity.class);
                         Quote q = quoteAdapter.getQuote(position);
 
+                        String hexColor = String.format("#%06X", (0xFFFFFF & q.getColor()));
+
                         intent.putExtra(EXTRA_QUOTE, q.getQuote());
                         intent.putExtra(EXTRA_PERSON, q.getPerson());
+                        intent.putExtra(EXTRA_COLOR, hexColor);
 
                         startActivity(intent);
                     }
