@@ -22,6 +22,11 @@ public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.QuoteViewHol
         this.quoteList = quoteList;
     }
 
+    public Quote getQuote(int i) {
+        Quote q = quoteList.get(i);
+        return q;
+    }
+
 
     @Override
     public int getItemCount() {

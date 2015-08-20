@@ -1,6 +1,8 @@
 package quotebook.theoneandonly.com.thequotebook;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,28 +16,36 @@ import java.util.List;
 
 public class Quotebook extends Activity {
 
+    public final static String EXTRA_MESSAGE = "com.theoneandonly.quotebook.MESSAGE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quotebook);
 
-        RecyclerView cardList = (RecyclerView) findViewById(R.id.cardList);
+        final Context mContext = getApplicationContext();
+
+        final RecyclerView cardList = (RecyclerView) findViewById(R.id.cardList);
         cardList.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         cardList.setLayoutManager(llm);
 
-        cardList.addOnItemTouchListener(
-            new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, int position) {
-                    Log.d("BINGO", "onItemClick: " + position);
-                }
-            })
-        );
-
-        QuoteAdapter quoteAdapter = new QuoteAdapter(createList());
+        final QuoteAdapter quoteAdapter = new QuoteAdapter(createList());
         cardList.setAdapter(quoteAdapter);
+
+        cardList.addOnItemTouchListener(
+                new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Log.d("BINGO", "onItemClick: " + position);
+                        Intent intent = new Intent(mContext, SingleQuoteActivity.class);
+                        Quote q = quoteAdapter.getQuote(position);
+                        intent.putExtra(EXTRA_MESSAGE, q.getQuote());
+                        startActivity(intent);
+                    }
+                })
+        );
     }
 
     @Override
