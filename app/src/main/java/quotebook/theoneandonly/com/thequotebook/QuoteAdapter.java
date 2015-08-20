@@ -1,6 +1,7 @@
 package quotebook.theoneandonly.com.thequotebook;
 
 import android.graphics.Color;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
-//import java.util.Random;
+import java.util.Random;
 
 
 public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.QuoteViewHolder> {
@@ -29,20 +30,8 @@ public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.QuoteViewHol
     // Create new views (invoked by the layout manager)
     @Override
     public QuoteAdapter.QuoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_layout, parent, false);
-        // set the view's size, margins, paddings and layout parameters
-//        Random rnd = new Random();
-//
-//        int r = rnd.nextInt(200);
-//        int g = rnd.nextInt(200);
-//        int b = rnd.nextInt(200);
-//
-//        int randomColor = Color.rgb(r, g, b);
-//
-//        v.setBackgroundColor(randomColor);
-
         QuoteViewHolder vh = new QuoteViewHolder(v);
         return vh;
     }
@@ -60,11 +49,23 @@ public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.QuoteViewHol
 
         protected TextView vQuote;
         protected TextView vPerson;
+        protected CardView vCard;
 
         public QuoteViewHolder(View v) {
             super(v);
             vQuote = (TextView) v.findViewById(R.id.quote);
             vPerson = (TextView) v.findViewById(R.id.person);
+            vCard = (CardView) v.findViewById(R.id.card_view);
+
+            Random rnd = new Random();
+
+            int r = rnd.nextInt(200);
+            int g = rnd.nextInt(200);
+            int b = rnd.nextInt(200);
+
+            int randomColor = Color.rgb(r, g, b);
+
+            vCard.setCardBackgroundColor(randomColor);
         }
     }
 }
