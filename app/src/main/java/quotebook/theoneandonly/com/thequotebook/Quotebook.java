@@ -16,7 +16,8 @@ import java.util.List;
 
 public class Quotebook extends Activity {
 
-    public final static String EXTRA_MESSAGE = "com.theoneandonly.quotebook.MESSAGE";
+    public final static String EXTRA_QUOTE = "com.theoneandonly.quotebook.QUOTE";
+    public final static String EXTRA_PERSON = "com.theoneandonly.quotebook.PERSON";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +40,13 @@ public class Quotebook extends Activity {
                     @Override
                     public void onItemClick(View view, int position) {
                         Log.d("BINGO", "onItemClick: " + position);
+
                         Intent intent = new Intent(mContext, SingleQuoteActivity.class);
                         Quote q = quoteAdapter.getQuote(position);
-                        intent.putExtra(EXTRA_MESSAGE, q.getQuote());
+
+                        intent.putExtra(EXTRA_QUOTE, q.getQuote());
+                        intent.putExtra(EXTRA_PERSON, q.getPerson());
+
                         startActivity(intent);
                     }
                 })
