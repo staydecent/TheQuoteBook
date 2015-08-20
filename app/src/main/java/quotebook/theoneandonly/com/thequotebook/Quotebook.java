@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,15 @@ public class Quotebook extends Activity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         cardList.setLayoutManager(llm);
+
+        cardList.addOnItemTouchListener(
+            new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    Log.d("BINGO", "onItemClick: " + position);
+                }
+            })
+        );
 
         QuoteAdapter quoteAdapter = new QuoteAdapter(createList());
         cardList.setAdapter(quoteAdapter);

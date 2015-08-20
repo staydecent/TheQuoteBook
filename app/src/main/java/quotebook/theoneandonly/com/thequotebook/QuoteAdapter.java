@@ -1,5 +1,6 @@
 package quotebook.theoneandonly.com.thequotebook;
 
+import android.app.ActionBar;
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
