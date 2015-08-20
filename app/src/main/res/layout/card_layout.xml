@@ -20,14 +20,14 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:animateLayoutChanges="true"
         >
 
         <TextView
             android:text="Swipe left to begin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentTop="false"
+            android:layout_centerVertical="true"
             android:id="@+id/quote"
             android:textSize="30sp" />
 
