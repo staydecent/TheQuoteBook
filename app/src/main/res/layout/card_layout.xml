@@ -4,36 +4,38 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_view"
     android:layout_gravity="center"
-    android:layout_width="200dp"
-    android:layout_height="200dp"
-    android:layout_margin="5dp"
-    card_view:cardCornerRadius="4dp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="4dp"
+    card_view:cardBackgroundColor="#386"
+    card_view:cardCornerRadius="8sp"
+    card_view:cardElevation="8sp"
+    card_view:cardPreventCornerOverlap="true"
+    card_view:cardUseCompatPadding="true"
+    card_view:contentPadding="18sp"
+    >
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
 
         <TextView
             android:text="Swipe left to begin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:id="@+id/quote"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="26sp"
-            android:textColor="#ffaaaaaa"
-            android:layout_above="@+id/person" />
+            android:textSize="30sp" />
 
         <TextView
             android:text="God"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="26sp"
-            android:gravity="end"
-            android:textColor="#ffa5a5a5"
-            android:layout_gravity="center"
+            android:layout_below="@+id/quote"
+            android:gravity="right"
             android:id="@+id/person"
-            android:layout_alignParentBottom="true"
-            android:layout_alignLeft="@+id/quote"
-            android:layout_alignStart="@+id/quote" />
+            android:textSize="20sp" />
 
     </RelativeLayout>
 
